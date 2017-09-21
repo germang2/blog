@@ -4,6 +4,7 @@
 	<title> @yield('title', 'Default') | Pagina de administracion </title>
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -23,6 +24,7 @@
 			<hr>
 			<div class="row">
 				<div class="col s12">
+					@include('flash::message')
 					@yield('content')					
 				</div>
 			</div>
