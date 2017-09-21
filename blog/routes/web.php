@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('hello/{name}', function($name = 'Nothing'){
+	echo "Hello " . $name;
+});
+
+// Group of routes
+Route::group(['prefix' => 'articles'], function(){
+	
+	Route::get('view/{id}', [
+		'uses' => 'TestController@view',
+		'as' => 'articlesView'
+	]);
+
+});
