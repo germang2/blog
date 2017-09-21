@@ -14,6 +14,10 @@ class TestController extends Controller
     	$article->category;
     	$article->user;
     	$article->tags;
-    	dd($article);
+    	
+    	// The controller return a view with two parameters.
+    	// The first is the name of the view, with the path if is needed
+    	// The second is a list with the values that will be sent to the view
+    	return view('test/index', ['article' => $article]);
     }
 }

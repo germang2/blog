@@ -16,16 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('hello/{name}', function($name = 'Nothing'){
-	echo "Hello " . $name;
-});
+Route::group(['prefix' => 'admin'], function(){
 
-// Group of routes
-Route::group(['prefix' => 'articles'], function(){
-	
-	Route::get('view/{id}', [
-		'uses' => 'TestController@view',
-		'as' => 'articlesView'
-	]);
+	Route::resource('users', 'UsersController');
 
 });
