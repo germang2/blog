@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
@@ -11,7 +12,7 @@ class UsersController extends Controller
     	return view('admin/users/create');
     }
 
-    public function store(Request $request){
+    public function store(UserRequest $request){
     	$user = new User($request->all());
     	$user->password = bcrypt($request->password);
     	$user->save();
@@ -42,7 +43,7 @@ class UsersController extends Controller
     	return view('admin/users/edit')->with('user', $user);
     }
 
-    public function update(Request $request, $id){
+    public function update(UserRequest $request, $id){
     	$user = User::find($id);
     	$user->name = $request->name;
     	$user->email = $request->email;
