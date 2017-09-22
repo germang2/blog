@@ -24,12 +24,12 @@
 					<td>{{ $user->name }}</td>
 					<td>
 						@if($user->type == "admin")
-							<span class ="p-3 mb-2 bg-primary text-white">{{$user->type}}</span>
+							<span class="badge badge-pill badge-danger">{{$user->type}}</span>
 						@else
-							<span class ="p-3 mb-2 bg-danger text-white">{{$user->type}}</span>
+							<span class="badge badge-pill badge-success">{{$user->type}}</span>
 						@endif
 					</td>
-					<td><a href="" class="btn btn-danger"></a><a href="" class="btn btn-warning"></a></td>
+					<td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"></a><a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger" onclick="return confirm('Seguro que desea borrar el usuario?')"></a></td>
 					<td>{{ $user->email }}</td>
 				</tr>
 			@endforeach
