@@ -25,6 +25,7 @@
 			<div class="row">
 				<div class="col s12">
 					@include('flash::message')
+					@include('admin.template.partials.errors')
 					@yield('content')					
 				</div>
 			</div>
