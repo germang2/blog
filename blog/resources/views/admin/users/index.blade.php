@@ -29,7 +29,11 @@
 							<span class="badge badge-pill badge-success">{{$user->type}}</span>
 						@endif
 					</td>
-					<td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"></a><a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger" onclick="return confirm('Seguro que desea borrar el usuario?')"></a></td>
+					<td>
+						<a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+
+						<a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger" onclick="return confirm('Seguro que desea borrar el usuario?')"><span class="glyphicon glyphicon-remove-circle" aria_hidden="true"></span></a>
+					</td>
 					<td>{{ $user->email }}</td>
 				</tr>
 			@endforeach
