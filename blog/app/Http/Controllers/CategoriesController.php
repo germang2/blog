@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
+// With Auth we can handle the user authentication
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -15,6 +17,13 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        // check verify if the user is logged in
+        /*
+        if(Auth::check())
+            dd('Logeado');
+        else
+            dd('No logeado');
+        */
         $categories = Category::orderBy('id', 'DESC')->paginate(4);
         return view('admin.categories.index')->with('categories', $categories);
     }

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	Route::resource('users', 'UsersController');
 
@@ -31,3 +31,6 @@ Route::group(['prefix' => 'admin'], function(){
 		'as' => 'admin.categories.destroy',
 	]);
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
