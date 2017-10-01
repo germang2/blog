@@ -51,9 +51,13 @@ class ArticlesController extends Controller
             $file->move($path, $name);    
         }
         
+        if(!\Auth::check()){
+            flash('No ha iniciado sesion')->warning();
+            return redirect()->route('articles.create');
+        }
 
         $article = new Article($request->all());
-        $article->user_id = Auth::user()->id;
+        $article->user_id = \Auth::user()->id;
         $article->save();
 
         $article->tags()->sync($request->tags); 

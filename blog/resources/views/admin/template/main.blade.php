@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('plugins/jquery/chosen/chosen.css') }}">
 
 </head>
 <body>
@@ -33,6 +34,9 @@
 
 		<script src = "{{ asset('plugins/jquery/js/jquery-3.2.1.js') }}"></script>
 		<script src = "{{ asset('plugins/bootstrap/js/bootstrap.js') }}" ></script>
+		<script src = "{{ asset('plugins/jquery/chosen/chosen.jquery.js') }}" ></script>
+
+		@yield('js')
 
 	</section>
 </body>
