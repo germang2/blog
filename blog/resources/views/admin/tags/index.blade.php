@@ -7,6 +7,17 @@
 	<h2>Tags</h2>
 	<hr>
 	<a href="{{ route('tags.create') }}" class="btn btn-info">Registrar un nuevo tag</a>
+	<!-- Buscador de tags -->
+	
+	{!! Form::open(['route' => 'tags.index', 'class' => 'navbar-form pull-right', 'method' => 'GET']) !!}
+
+		<div class = "form-group">
+			{!! Form::text('tag', null, ['class' => 'form-control', 'placeholder' => ' Buscar tag', 'id' => 'search']) !!}
+		</div>
+
+	{!! Form::close() !!}
+
+	<!-- Fin de buscador -->
 	<hr>
 
 	<table class="table table-striped">
