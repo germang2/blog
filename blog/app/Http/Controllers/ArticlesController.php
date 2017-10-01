@@ -8,6 +8,7 @@ use App\Tag;
 use App\Image;
 use App\Article;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -42,7 +43,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {        
         if($request->file('image')){
             $file = $request->file('image');

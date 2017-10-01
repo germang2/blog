@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ asset('plugins/jquery/chosen/chosen.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/jquery/trumbowyg/ui/trumbowyg.css') }}">
 
 </head>
 <body>
@@ -35,6 +36,7 @@
 		<script src = "{{ asset('plugins/jquery/js/jquery-3.2.1.js') }}"></script>
 		<script src = "{{ asset('plugins/bootstrap/js/bootstrap.js') }}" ></script>
 		<script src = "{{ asset('plugins/jquery/chosen/chosen.jquery.js') }}" ></script>
+		<script src = "{{ asset('plugins/jquery/trumbowyg/trumbowyg.js') }}"></script>
 
 		@yield('js')
 

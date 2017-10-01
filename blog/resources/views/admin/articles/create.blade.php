@@ -12,7 +12,7 @@
 
 		<div class = "form-group">
 			{!! Form::label('content', 'Contenido') !!}
-			{!! Form::textarea('content', null, ['class' => 'form-control', 'required']) !!}
+			{!! Form::textarea('content', null, ['class' => 'form-control textarea-content', 'required']) !!}
 		</div>
 
 		<div class = "form-group">
@@ -50,6 +50,8 @@
 		$('.select-category').chosen({
 			placeholder_text_single: 'Seleccione una categoria'
 		});
+
+		$('.textarea-content').trumbowyg();
 	</script>
 
 @endsection
