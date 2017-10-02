@@ -22,6 +22,7 @@
 				  <td>{{ $category->name }}</td>
 				  <td>
 					  <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+					  
 					  <a href="{{ route('admin.categories.destroy', $category->id) }}" class="btn btn-danger" onclick="return confirm('Seguro que desea borrar la categoria?')"><span class="glyphicon glyphicon-remove-circle" aria_hidden="true"></span></a>
 				  </td>
 			</tr>

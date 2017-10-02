@@ -17,9 +17,20 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.articles.index');
+        // The scope only show when a recive a query, if the $title variable is empty
+        // the scope doesn't return anything
+        //$articles = Article::Search($request->title)->orderBy('id', 'DESC')->paginate(5);
+        $articles = Article::orderBy('id', 'DESC')->paginate(5);
+        // For get the registers of the FK for each article, is necesary invocate
+        // the functions indicates in the model
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->user;
+        });
+
+        return view('admin.articles.index')->with('articles', $articles);
     }
 
     /**
@@ -92,7 +103,19 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        $article->category;
+
+        $categories = Category::orderBy('name', 'DESC')->pluck('name', 'id');
+        $tags = Tag::orderBy('tag', 'DESC')->pluck('tag', 'id');
+
+        $my_tags = $article->tags->pluck('id')->ToArray();
+
+        return view('admin.articles.edit')
+            ->with('categories', $categories)
+            ->with('article', $article)
+            ->with('tags', $tags)
+            ->with('my_tags', $my_tags);
     }
 
     /**
@@ -104,7 +127,15 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->fill($request->all());
+        $article->update();
+
+        $article->tags()->sync($request->tags); 
+
+        flash('Se ha editado el articulo de forma exitosa')->success();
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -115,6 +146,11 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+
+        flash('Se ha eliminado el articulo de forma correcta')->warning();
+
+        return redirect()->route('articles.index');
     }
 }
